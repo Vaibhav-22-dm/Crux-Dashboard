@@ -8,8 +8,6 @@ import { Select, MenuItem } from '@mui/material';
 export default function ProductTableDropDown(props) {
     const [value, setValue] = React.useState('today');
     const bottomBorderColor = props.bottomBorderColor
-    const color = props.color
-    const activeColor = props.activeColor
 
     const handleChange = (event, newValue) => {
         setValue(newValue);
@@ -20,7 +18,7 @@ export default function ProductTableDropDown(props) {
     }
 
     return (
-        <Box sx={{ borderBottom: 1, borderColor: `${bottomBorderColor}`, display: 'flex', justifyContent: 'space-between', padding: '10px 0px 0px 0px' }}>
+        <Box className='dropdown-header'>
             <Select
                 labelId="demo-simple-select-label"
                 value={value}

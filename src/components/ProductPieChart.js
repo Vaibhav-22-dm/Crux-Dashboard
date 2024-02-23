@@ -46,7 +46,6 @@ export default function ProductPieChart({ data }) {
     return (
         <Box className={`${mode} widgetBox`} sx={{
             ...data.style,
-            width: '100%',
             height: height ? `${height}px` : '212px',
             overflow: 'hidden'
         }}>

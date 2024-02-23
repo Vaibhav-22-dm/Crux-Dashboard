@@ -37,14 +37,11 @@ export default function ProductLineChart({ data }) {
     const height = data?.height
     const bottomAxis = data.xAxis
     const metaData = data.metaData
-    const color1 = data.color1
-    const color2 = data.color2
-    const color3 = data.color3
 
     return (
         <Box className={`${mode} widgetBox`} sx={{
             ...data.style,
-            width: '100%',
+            // width: '100%',
             height: height ? `${height}px` : '212px',
         }}
         >
@@ -78,27 +75,30 @@ export default function ProductLineChart({ data }) {
                 sx={{
                     marginTop: '-25px',
                     marginLeft: '-30px',
-                    color: 'black'
                 }}
 
             />
-            {metaData ? <Divider sx={{ width: '85%', margin: 'auto', marginTop: '10px', backgroundColor: `${color2}` }} /> : null}
+            {metaData ? <Divider sx={{ 
+                width: '85%', 
+                margin: 'auto', 
+                marginTop: '10px', 
+                 }} /> : null}
             {metaData ?
 
                 <List sx={{ padding: "20px" }}>
                     {Object.keys(metaData).map((key, index) => (
                         <ListItem sx={{ padding: "0px" }}>
                             <ListItemText
+                                className="meta-data-item"
                                 sx={{
                                     borderLeft: `5px solid ${colors[index]}`,
-                                    paddingLeft: "5px",
-                                    display: "flex",
-                                    flexDirection: "column-reverse",
-                                    color: `${color2}`
                                 }}
                                 disableTypography
-                                primary={<Typography variant="body2" style={{ color: `${color1}`, fontSize: '20px' }}>{metaData[key]}</Typography>}
-                                secondary={<Typography variant="body2" style={{ color: `${color2}`, fontSize: '13px' }}>{key}</Typography>}
+                                primary={<Typography variant="body2" style={{ 
+                                    fontSize: '20px' 
+                                }} className='meta-data-number'>{metaData[key]}</Typography>}
+                                secondary={<Typography variant="body2" style={{ 
+                                    fontSize: '13px' }} className='meta-data-desc'>{key}</Typography>}
                             />
                         </ListItem>
                     ))}

@@ -1,6 +1,7 @@
 .App {
-  text-align: center;
+  /* text-align: center; */
   background-color: #F4F4FF;
+  font-size: 11px;
 }
 
 .App-logo {
@@ -36,5 +37,25 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+*::-webkit-scrollbar {
+  width: 6px;
+  border-radius: 25px;
+  margin: 2px;
+}
+
+*::-webkit-scrollbar-track {
+  background: rgba(217, 217, 217, 0.4);
+}
+
+*::-webkit-scrollbar-thumb {
+  background: #CDCDCD;
+  border-radius: 8px;
+  background-clip: padding-box;
+}
+
+*::-webkit-scrollbar-thumb:hover {
+  background: #5a5a5a;
 }
 

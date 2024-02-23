@@ -19,8 +19,6 @@ export default function DescriptionBox({ data }) {
                 <div
                     dangerouslySetInnerHTML={{ __html: content }}
                     style={{
-                        fontSize: '11px',
-                        textAlign: 'left',
                         maxHeight: '146px',
                         overflowY: 'auto',
                         padding: '0px 15px'

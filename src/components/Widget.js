@@ -11,14 +11,15 @@ import TextField from '@mui/material/TextField';
 import HistoryIcon from '@mui/icons-material/History';
 import ZoomBox from './ZoomBox';
 import ToggleMenu from './ToggleMenu';
+import ProductTableTabs from './ProductTableTabs';
 
 const style = {
     position: 'absolute',
     top: '50%',
     left: '50%',
     transform: 'translate(-50%, -50%)',
-    width: 900,
-    height: 525,
+    width: 1000,
+    height: 540,
     bgcolor: '#FFFFFF',
     borderRadius: '20px',
     boxShadow: 24,
@@ -32,6 +33,13 @@ export default function Widget({ open, handleClose }) {
     const handleDelete = () => {
         // console.info('You clicked the delete icon.');
     };
+
+    const [data, setData] = React.useState({
+        rows: null,
+        header: <ProductTableTabs />,
+        style: {},
+        mode: "light"
+    })
 
     return (
         <div>
@@ -47,7 +55,7 @@ export default function Widget({ open, handleClose }) {
                             <Grid container>
                                 <Grid item xs={12} style={{
                                     width: "100%",
-                                    padding: "20px 20px 0 20px",
+                                    padding: "10px 20px 0 20px",
                                 }}>
                                     <Button variant="dark" sx={{ float: "right" }} >
                                         <CloseIcon onClick={handleClose} />

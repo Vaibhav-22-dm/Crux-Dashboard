@@ -43,17 +43,11 @@ export default function Dashboard() {
                 'Q2-23': '12%'
             }
         ],
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)'/>,
+        header: <ProductTableTabs />,
         mode: 'light',
+        height: 170,
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF'
-        },
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
-        tableBorderColor: '#F6F6F6'
+        }
     }
 
     const data2 = {
@@ -84,17 +78,10 @@ export default function Dashboard() {
                 'Q2-23': '12%'
             }
         ],
-        header: <ProductTableDropDown bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(244, 244, 244, 0.9)' activeColor='rgba(244, 244, 244, 0.9)'  />,
+        header: <ProductTableDropDown />,
         mode: 'primary',
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#5E5ADB'
         },
-        color1: '#F1F1F2',
-        color2: 'rgba(255, 255, 255, 0.65)',
-        color3: 'rgba(244, 244, 244, 0.9)',
-        tableBorderColor: 'rgba(246, 246, 246, 0.1)'
     }
 
     const data3 = {
@@ -202,19 +189,13 @@ export default function Dashboard() {
                 'Q3-23': '10%',
                 'Q4-23': '4%',
                 'Q1-24': '4%'
-            }
+            },
         ],
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        height: 400,
+        header: <ProductTableTabs />,
         mode: 'dark',
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: 'rgba(40, 40, 40, 1)'
         },
-        color1: '#F1F1F2',
-        color2: 'rgba(255, 255, 255, 0.65)',
-        color3: 'rgba(244, 244, 244, 0.9)', 
-        tableBorderColor: 'rgba(246, 246, 246, 0.1)'
     }
 
     const data4 = {
@@ -245,17 +226,10 @@ export default function Dashboard() {
                 'Q2-23': '12%'
             }
         ],
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableTabs />,
         mode: 'primary',
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: 'rgba(40, 40, 40, 1)'
         },
-        color1: '#F1F1F2',
-        color2: 'rgba(255, 255, 255, 0.65)',
-        color3: 'rgba(244, 244, 244, 0.9)', 
-        tableBorderColor: 'rgba(246, 246, 246, 0.1)'
 
     }
 
@@ -287,18 +261,10 @@ export default function Dashboard() {
                 'Q2-23': '12%'
             }
         ],
-        header: <ProductTableDropDown bottomBorderColor = 'rgba(225, 225, 225, 1)' color = 'rgba(187, 187, 187, 1)' activeColor = 'rgba(94, 90, 219, 1)' />,
+        header: <ProductTableDropDown />,
         mode: 'primary',
         style: {
-
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: 'rgba(94, 90, 219, 1)'
         },
-        color1: '#F1F1F2',
-        color2: 'rgba(255, 255, 255, 0.65)',
-        color3: 'rgba(244, 244, 244, 0.9)',
-        tableBorderColor: 'rgba(246, 246, 246, 0.1)'
     }
 
     const data6 = {
@@ -306,17 +272,9 @@ export default function Dashboard() {
         <p>Based on the provided data, the most effective hour of the day to send an email across all stores for all time, with the highest engagement after opening, is at 15:00(3 PM), with a total of 5041 emails opened. The next best hours are 16:00 (4 PM) and 17:00 (5 PM) with <strong>5007</strong> and <strong>4785</strong> emails opened respectively. There is a noticeable drop in</p>
         <p>Based on the provided data, the most effective hour of the day to send an email across all stores for all time, with the highest engagement after opening, is at 15:00(3 PM), with a total of 5041 emails opened. The next best hours are 16:00 (4 PM) and 17:00 (5 PM) with <strong>5007</strong> and <strong>4785</strong> emails opened respectively. There is a noticeable drop in</p>
         `,
-        header: <ProductTableDropDown bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableDropDown />,
         mode: 'light',
-        style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF'
-        },
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
+        style: {},
     }
 
     const data7 = {
@@ -346,18 +304,12 @@ export default function Dashboard() {
                 platform: 'Youtube',
             },
         ],
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='#5E5ADB' />,
+        header: <ProductTableTabs />,
         mode: 'dark',
         style: {
             borderRadius: '15px 0px 0px 15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: 'rgba(40, 40, 40, 1)',
             borderLeft: 'none'
         },
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
     }
 
     const data8 = {
@@ -388,19 +340,12 @@ export default function Dashboard() {
                 'Q2-23': '12%'
             }
         ],
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableTabs />,
         mode: 'light',
         style: {
             borderRadius: '0',
-            boxShadow: '10px 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF',
             borderLeft: '1px solid rgba(0, 0, 0, 0.1)'
         },
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
-        tableBorderColor: '#F6F6F6',
     }
 
     const data9 = {
@@ -408,18 +353,12 @@ export default function Dashboard() {
         <p>Based on the provided data, the most effective hour of the day to send an email across all stores for all time, with the highest engagement after opening, is at 15:00(3 PM), with a total of 5041 emails opened. The next best hours are 16:00 (4 PM) and 17:00 (5 PM) with <strong>5007</strong> and <strong>4785</strong> emails opened respectively. There is a noticeable drop in</p>
         <p>Based on the provided data, the most effective hour of the day to send an email across all stores for all time, with the highest engagement after opening, is at 15:00(3 PM), with a total of 5041 emails opened. The next best hours are 16:00 (4 PM) and 17:00 (5 PM) with <strong>5007</strong> and <strong>4785</strong> emails opened respectively. There is a noticeable drop in</p>
         `,
-        header: <ProductTableDropDown bottomBorderColor='rgba(225, 225, 225, 1)' color='#5E5ADB' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableDropDown />,
         mode: 'light',
         style: {
             borderRadius: '0 15px 15px 0',
-            boxShadow: '10px 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF',
             borderLeft: '1px solid rgba(0, 0, 0, 0.1)'
         },
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
     }
 
     const data10 = {
@@ -449,18 +388,11 @@ export default function Dashboard() {
                 platform: 'Youtube',
             },
         ],
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableTabs />,
         mode: 'light',
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF'
         },
         height: 450,
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
     }
 
     const data11 = {
@@ -470,18 +402,11 @@ export default function Dashboard() {
             { id: 2, value: 90, label: 'Facebook' },
             { id: 3, value: 70, label: 'Tiktok' },
         ],
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableTabs />,
         mode: 'light',
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF'
         },
         height: 212,
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
     }
 
     const data12 = {
@@ -490,20 +415,13 @@ export default function Dashboard() {
             'BirthdaySpecial25': [{ x: '', y: 0 }, { x: 'Google', y: 20 }, { x: 'Instagram', y: 28 }, { x: 'Facebook', y: 5 }, { x: 'Tiktok', y: 0 }],
             'Newuser30': [{ x: '', y: 20 }, { x: 'Google', y: 28 }, { x: 'Instagram', y: 11 }, { x: 'Facebook', y: 13 }, { x: 'Tiktok', y: 26 }],
         },
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableTabs />,
         mode: 'light',
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF'  
         },
         height: 212,
         xAxis: false,
         metaData: null,
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
     }
 
     const data13 = {
@@ -512,12 +430,9 @@ export default function Dashboard() {
             'BirthdaySpecial25': [{ x: '', y: 0 }, { x: 'Google', y: 20 }, { x: 'Instagram', y: 28 }, { x: 'Facebook', y: 5 }, { x: 'Tiktok', y: 0 }],
             'Newuser30': [{ x: '', y: 20 }, { x: 'Google', y: 28 }, { x: 'Instagram', y: 11 }, { x: 'Facebook', y: 13 }, { x: 'Tiktok', y: 26 }],
         },
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableTabs />,
         mode: 'light',
-        style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: '#FFFFFF'  
+        style: { 
         },
         height: 452,
         xAxis: true,
@@ -526,10 +441,6 @@ export default function Dashboard() {
             'BirthdaySpecial25': 27000,
             'Newuser30': 12500,
         },
-
-        color1: '#5E5ADB',
-        color2: '#474747',
-        color3: '#393939',
     }
 
     const data14 = {
@@ -540,12 +451,9 @@ export default function Dashboard() {
             'Newuser40': [{ x: '', y: 30 }, { x: 'Google', y: 20 }, { x: 'Instagram', y: 19 }, { x: 'Facebook', y: 35 }, { x: 'Tiktok', y: 16 }],
             'Newuser50': [{ x: '', y: 40 }, { x: 'Google', y: 2 }, { x: 'Instagram', y: 5 }, { x: 'Facebook', y: 3 }, { x: 'Tiktok', y: 40 }],
         },
-        header: <ProductTableTabs bottomBorderColor='rgba(225, 225, 225, 1)' color='rgba(187, 187, 187, 1)' activeColor='rgba(94, 90, 219, 1)' />,
+        header: <ProductTableTabs />,
         mode: 'dark',
         style: {
-            borderRadius: '15px',
-            boxShadow: '0 0 6px rgba(0, 0, 0, 0.1)',
-            backgroundColor: 'rgba(40, 40, 40, 1)'
         },
         height: 650,
         xAxis: true,
@@ -556,10 +464,6 @@ export default function Dashboard() {
             'Newuser40': 16000,
             'Newuser50': 17500,
         },
-
-        color1: '#F1F1F2',
-        color2: 'rgba(255, 255, 255, 0.65)',
-        color3: '#393939',
     }
 
 

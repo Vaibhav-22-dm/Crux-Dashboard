@@ -22,15 +22,11 @@ export default function ProductBarChart({ data }) {
     const header = data.header
     const mode = data.mode
     const height = data?.height
-    const color1 = data.color1
-    const color2 = data.color2
-    const color3 = data.color3
 
 
     return (
         <Box className={`${mode} widgetBox`} sx={{
             ...data.style, 
-            width: '100%',
             height: height ? `${height}px` : '212px',
         }}
         >

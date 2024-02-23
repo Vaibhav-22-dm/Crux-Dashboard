@@ -9,10 +9,6 @@ import IconButton from '@mui/material/IconButton';
 export default function ProductTableTabs(props) {
     const [value, setValue] = React.useState(0);
 
-    const bottomBorderColor = props.bottomBorderColor
-    const color = props.color
-    const activeColor = props.activeColor
-
     const handleChange = (event, newValue) => {
         setValue(newValue);
     };
@@ -22,7 +18,7 @@ export default function ProductTableTabs(props) {
     }
 
     return (
-        <Box sx={{ borderBottom: 1, borderColor: `${bottomBorderColor}`, display: 'flex', justifyContent: 'space-between', padding: '10px 0px 0px 0px' }}>
+        <Box className="tabs-header">
             <Tabs
                 value={value}
                 onChange={handleChange}
