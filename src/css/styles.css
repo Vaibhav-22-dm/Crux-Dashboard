@@ -1,5 +1,8 @@
-.css-1u5ingn-MuiChartsAxis-root .MuiChartsAxis-line,
-.css-1u5ingn-MuiChartsAxis-root .MuiChartsAxis-tick {
+.MuiChartsAxis-tick {
+    stroke: none !important;
+}
+
+.MuiChartsAxis-line{
     stroke: none !important;
 }
 
@@ -12,7 +15,7 @@
     transform: translateY(-5px);
 }
 
-.MuiChartsAxis-root.MuiChartsAxis-directionX.MuiChartsAxis-bottom.css-1u5ingn-MuiChartsAxis-root {
+.MuiChartsAxis-root.MuiChartsAxis-directionX.MuiChartsAxis-bottom {
     transform: translateY(185px);
 
 }
@@ -29,11 +32,11 @@
     font-size: 11px;
 }
 
-.light .css-1u5ingn-MuiChartsAxis-root .MuiChartsAxis-tickLabel {
+.light .MuiChartsAxis-tickLabel {
     fill: #BBBBBB !important;
 }
 
-.dark .css-1u5ingn-MuiChartsAxis-root .MuiChartsAxis-tickLabel {
+.dark .MuiChartsAxis-tickLabel {
     fill: white !important;
 }
 
@@ -146,7 +149,6 @@
 }
 
 
-
 .light .css-pqjvzy-MuiSvgIcon-root-MuiSelect-icon {
     color: #5E5ADB;
 }
@@ -159,23 +161,23 @@
     color: rgb(255, 255, 255);
 }
 
-.light .css-1ux0s4z-MuiInputBase-root-MuiInput-root-MuiSelect-root {
+.light .dropdown-select-title {
     color: #5E5ADB;
 }
 
-.primary .css-1ux0s4z-MuiInputBase-root-MuiInput-root-MuiSelect-root {
+.primary .dropdown-select-title {
     color: #F1F1F2;
 }
 
-.dark .css-1ux0s4z-MuiInputBase-root-MuiInput-root-MuiSelect-root {
+.dark .dropdown-select-title {
     color: rgb(255, 255, 255);
 }
 
-.light .css-8tofx3-MuiButtonBase-root-MuiTab-root {
+.light .tabs-btn {
     color: #BBBBBB
 }
 
-.light .css-8tofx3-MuiButtonBase-root-MuiTab-root.Mui-selected {
+.light .tabs-btn.Mui-selected {
     color: #5E5ADB
 }
 
@@ -183,11 +185,11 @@
     background-color: #5E5ADB;
 }
 
-.primary .css-8tofx3-MuiButtonBase-root-MuiTab-root {
+.primary .tabs-btn {
     color: rgba(255, 255, 255, 0.65);
 }
 
-.primary .css-8tofx3-MuiButtonBase-root-MuiTab-root.Mui-selected {
+.primary .tabs-btn.Mui-selected {
     color: #F1F1F2
 }
 
@@ -196,11 +198,11 @@
 }
 
 
-.dark .css-8tofx3-MuiButtonBase-root-MuiTab-root {
+.dark .tabs-btn{
     color: rgb(187, 187, 187);
 }
 
-.dark .css-8tofx3-MuiButtonBase-root-MuiTab-root.Mui-selected {
+.dark .tabs-btn.Mui-selected {
     color: rgb(255, 255, 255)
 }
 
@@ -470,4 +472,8 @@
     justify-content: center;
     background: #E9EDF5;
     border-radius: 5px;
+}
+
+.primary .dropdown-select-title{
+    color: #FFFFFF
 }

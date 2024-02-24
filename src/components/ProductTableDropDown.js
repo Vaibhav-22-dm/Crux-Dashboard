@@ -31,6 +31,7 @@ export default function ProductTableDropDown(props) {
                 onChange={(e) => {
                     setValue(e.target.value)
                 }}
+                className="dropdown-select-title"
             >
                 <MenuItem value={'today'}
                 >Today</MenuItem>
@@ -50,6 +51,7 @@ export default function ProductTableDropDown(props) {
                 sx={{
                     padding: '0px 10px',
                 }}
+                className="dropdown-icon-btn"
             >
                 <MoreHorizIcon />
             </IconButton>
