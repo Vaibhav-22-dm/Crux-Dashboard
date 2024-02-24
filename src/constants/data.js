@@ -221,7 +221,7 @@ export const data4 = {
         }
     ],
     header: "tabs",
-    mode: 'primary',
+    mode: 'dark',
     size: '1x1'
 }
 

@@ -1,7 +1,5 @@
 import React, { Component, useState } from "react";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import ProductTable from "./ProductTable";
-import ProductTableTabs from "./ProductTableTabs";
 import ZoomInIcon from '@mui/icons-material/ZoomIn';
 import ZoomOutIcon from '@mui/icons-material/ZoomOut';
 import CloseIcon from '@mui/icons-material/Close';

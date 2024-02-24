@@ -1,8 +1,6 @@
 import * as React from 'react';
 import { BarChart } from '@mui/x-charts/BarChart';
-import { axisClasses } from '@mui/x-charts';
 import Box from '@mui/material/Box';
-import styles from "../css/override.css"
 import ProductTableTabs from './ProductTableTabs';
 import ProductTableDropDown from './ProductTableDropDown';
 import { colors } from "../constants/data"

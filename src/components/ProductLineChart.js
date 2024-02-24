@@ -1,13 +1,10 @@
 import * as React from 'react';
-import { BarChart } from '@mui/x-charts/BarChart';
 import Box from '@mui/material/Box';
-import styles from "../css/override.css"
 import { LineChart } from '@mui/x-charts';
 
 import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
-import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { Divider, Typography } from '@mui/material';
 import ProductTableTabs from './ProductTableTabs';
 import ProductTableDropDown from './ProductTableDropDown';

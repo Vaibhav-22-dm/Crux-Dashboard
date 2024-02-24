@@ -6,20 +6,17 @@ import Modal from '@mui/material/Modal';
 import Grid from '@mui/material/Grid';
 import WidgetIcon from '../icons/WidgetIcon';
 import CloseIcon from '@mui/icons-material/Close';
-import Chip from '@mui/material/Chip';
 import TextField from '@mui/material/TextField';
 import HistoryIcon from '@mui/icons-material/History';
 import ZoomBox from './ZoomBox';
 import ToggleMenu from './ToggleMenu';
 import ProductTableTabs from './ProductTableTabs';
-import Radio from '@mui/material/Radio';
 import ProductTable from './ProductTable';
 import ProductBarChart from './ProductBarChart';
 import ProductLineChart from './ProductLineChart';
 import ProductPieChart from './ProductPieChart';
 import DescriptionBox from './DescriptionBox';
 import ProductTableDropDown from './ProductTableDropDown';
-import styles from "../css/override.css"
 
 const style = {
     position: 'absolute',
@@ -71,19 +68,30 @@ export default function Widget({ open, handleClose, setWidgets }) {
                 setObj(item)
             }
             else if (type === "chart") {
-                setObj({
+                const item = {
                     mode: mode,
-                    header: <ProductTableTabs />,
+                    header: "tabs",
                     style: {},
-                    rows: JSON.parse(chartData)
-                })
-                if (chartType === "bar") setComponent(<ProductBarChart data={obj} />)
-                else if (chartType === "line") setComponent(<ProductLineChart data={obj} />)
-                else setComponent(<ProductPieChart data={obj} />)
+                    rows: JSON.parse(chartData),
+                    type: "chart",
+                    chartType: chartType
+                }
+                console.log(item)
+                if (chartType === "bar") setComponent(<ProductBarChart data={item} />)
+                else if (chartType === "line") setComponent(<ProductLineChart data={item} />)
+                else setComponent(<ProductPieChart data={item} />)
+                setObj(item)
             }
             else {
-                setObj({ ...obj, content: summary, header: <ProductTableDropDown />})
-                setComponent(<DescriptionBox data={obj} />)
+                const item = {
+                    mode: mode,
+                    header: "tabs",
+                    style: {},
+                    content: summary,
+                    type: "dropdown"
+                }
+                setComponent(<DescriptionBox data={item} />)
+                setObj(item)
             }
         }
         catch (e) {

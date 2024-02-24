@@ -1,17 +1,12 @@
 import * as React from 'react';
 import CssBaseline from '@mui/material/CssBaseline';
-import { styled } from '@mui/material/styles';
 import Box from '@mui/material/Box';
-import Paper from '@mui/material/Paper';
 import Grid from '@mui/material/Grid';
 import ProductTable from '../components/ProductTable';
-import ProductTableTabs from '../components/ProductTableTabs';
-import ProductTableDropDown from '../components/ProductTableDropDown';
 import DescriptionBox from '../components/DescriptionBox';
 import ProductBarChart from '../components/ProductBarChart';
 import ProductPieChart from '../components/ProductPieChart';
 import ProductLineChart from '../components/ProductLineChart';
-import styles from "../css/override.css"
 import { data1, data2, data3, data4, data5, data6, data7, data8, data9, data10, data11, data12, data13, data14 } from "../constants/data.js"
 
 export default function Dashboard({ widgets }) {
@@ -104,9 +99,29 @@ export default function Dashboard({ widgets }) {
                 <Grid item xs={12}>
                     <Grid container spacing={3.5}>
                         {widgets?.map((widget) => {
-                            if (widget.type === "table") return (<Grid item xs={2}>
-                                        <ProductTable data={widget} />
+                            if (widget.type === "table") return (
+                                <Grid item xs={2}>
+                                    <ProductTable data={widget} />
+                                </Grid>)
+                            else if(widget.type === "chart"){
+                                if(widget.chartType === "bar") return (
+                                    <Grid item xs={2}>
+                                        <ProductBarChart data={widget} />
+                                    </Grid> 
+                                )
+                                else if (widget.chartType === "line") return (
+                                    <Grid item xs={2}>
+                                        <ProductLineChart data={widget} />
                                     </Grid>)
+                                else if (widget.chartType === "pie") (
+                                    <Grid item xs={2}>
+                                        <ProductPieChart data={widget} />
+                                    </Grid>)
+                            }
+                            else return (
+                                <Grid item xs={2}>
+                                    <DescriptionBox data={widget} />
+                                </Grid>)
                         }
                         )}
                     </Grid>

@@ -7,7 +7,6 @@ import { Select, MenuItem } from '@mui/material';
 
 export default function ProductTableDropDown(props) {
     const [value, setValue] = React.useState('today');
-    const bottomBorderColor = props.bottomBorderColor
 
     const handleChange = (event, newValue) => {
         setValue(newValue);

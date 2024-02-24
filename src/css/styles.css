@@ -37,25 +37,6 @@
     fill: white !important;
 }
 
-/* .custom::-webkit-scrollbar {
-    width: 6px;
-    border-radius: 25px;
-}
-
-.custom::-webkit-scrollbar-track {
-    background: rgba(217, 217, 217, 0.4);
-}
-
-.custom::-webkit-scrollbar-thumb {
-    background: #CDCDCD;
-    border-radius: 8px;
-    background-clip: padding-box;
-}
-
-.custom::-webkit-scrollbar-thumb:hover {
-    background: #5a5a5a;
-} */
-
 .css-1x51dt5-MuiInputBase-input-MuiInput-input {
     font-size: 13px !important;
 }
@@ -237,6 +218,22 @@
 
 .dark .MuiDivider-root.MuiDivider-fullWidth.css-1wd0uuc-MuiDivider-root {
     background-color: #ffffffa6;
+}
+
+.light .meta-data-desc {
+    color: #AFAFAF;
+}
+
+.light .meta-data-number {
+    color: #4F4F4F;
+}
+
+.primary .meta-data-desc {
+    color: #ffffffa6;
+}
+
+.primary .meta-data-number {
+    color: #f1f1f2;
 }
 
 .dark .meta-data-desc {
