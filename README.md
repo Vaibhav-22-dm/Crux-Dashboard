@@ -43,7 +43,7 @@ This is a customizable dashboard where clients can upload and visualize their da
 - App is live at 
 
   ```
-  http://localhost:3000
+  http://localhost:3000/Crux-Dashboard
   ```
 
 ## Widget Creation
