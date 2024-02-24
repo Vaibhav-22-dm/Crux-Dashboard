@@ -3,15 +3,9 @@ import { BarChart } from '@mui/x-charts/BarChart';
 import { axisClasses } from '@mui/x-charts';
 import Box from '@mui/material/Box';
 import styles from "../css/override.css"
-
-const colors = [
-    "#F1E254",
-    "#FF8E8E",
-    "#96D3FF",
-    "#5FDC8F",
-    "#F182F3",
-    "#5E5ADB"
-]
+import ProductTableTabs from './ProductTableTabs';
+import ProductTableDropDown from './ProductTableDropDown';
+import { colors } from "../constants/data"
 
 
 const valueFormatter = (value) => `${value}K`;
@@ -21,16 +15,11 @@ export default function ProductBarChart({ data }) {
     const rows = data.rows
     const header = data.header
     const mode = data.mode
-    const height = data?.height
 
 
     return (
-        <Box className={`${mode} widgetBox`} sx={{
-            ...data.style, 
-            height: height ? `${height}px` : '212px',
-        }}
-        >
-            {header}
+        <Box className={`${mode} widget-box bar-chart`}>
+            {header === "tabs" ? <ProductTableTabs /> : <ProductTableDropDown />}
             <BarChart
                 dataset={rows}
                 xAxis={[{ scaleType: 'band', dataKey: 'platform' }]}
@@ -39,11 +28,6 @@ export default function ProductBarChart({ data }) {
                 ]}
                 slots={{
                     bar: (props) => {
-                        // const radius = 7;
-                        // const { x, y, height, width, ownerState, ...restProps } = props
-                        // const d = `M${x},${y} h${width - radius} a${radius},${radius} 0 0 1 ${radius},${radius}v ${height - 2 * radius} a${radius},${radius} 0 0 1 ${-radius},${radius} h${radius - width}z`
-                        // return <path d={d} {...restProps} />
-                        // console.log(props.ownerState.dataIndex)
                         return <rect
                             fill={colors[props.ownerState.dataIndex]}
                             height={props.style.height.animation.to}
@@ -53,10 +37,7 @@ export default function ProductBarChart({ data }) {
                         />
                     }
                 }}
-                height={height ? height-30 : 220}
-                sx={{
-                    width: '100%',
-                }}
+                height={data.size==="2x1" ? 400 : 200}
                 bottomAxis={null}
             >
             </BarChart>

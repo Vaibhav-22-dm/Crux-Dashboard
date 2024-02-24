@@ -4,15 +4,8 @@ import styles from "../css/override.css"
 import { PieChart } from '@mui/x-charts/PieChart';
 import { useDrawingArea } from '@mui/x-charts';
 import { styled } from '@mui/material/styles';
-
-const colors = [
-    "#F1E254",
-    "#FF8E8E",
-    "#96D3FF",
-    "#5FDC8F",
-    "#F182F3",
-    "#5E5ADB"
-]
+import ProductTableTabs from './ProductTableTabs';
+import ProductTableDropDown from './ProductTableDropDown';
 
 const StyledText = styled('text')(({ theme }) => ({
     fill: theme.palette.text.primary,
@@ -41,15 +34,10 @@ export default function ProductPieChart({ data }) {
     const rows = data.rows
     const header = data.header
     const mode = data.mode
-    const height = data?.height
 
     return (
-        <Box className={`${mode} widgetBox`} sx={{
-            ...data.style,
-            height: height ? `${height}px` : '212px',
-            overflow: 'hidden'
-        }}>
-            {header}
+        <Box className={`${mode} widget-box pie-chart`} sx={{overflow: 'hidden'}}>
+            {header === "tabs" ? <ProductTableTabs /> : <ProductTableDropDown />}
             <PieChart
                 series={
                     [

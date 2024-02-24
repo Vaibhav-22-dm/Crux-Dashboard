@@ -8,8 +8,9 @@ import List from '@mui/material/List';
 import ListItem from '@mui/material/ListItem';
 import ListItemButton from '@mui/material/ListItemButton';
 import ListItemIcon from '@mui/material/ListItemIcon';
-import { Avatar, Button } from '@mui/material';
+import { Avatar, Button, InputAdornment, TextField } from '@mui/material';
 import Logo from '../icons/LogoIcon';
+import Avatarprofile from "../images/Avatarprofile.png"
 import HomeIcon from '../icons/HomeIcon';
 import ActivityIcon from '../icons/ActivityIcon';
 import MessageIcon from '../icons/MessageIcon';
@@ -18,24 +19,41 @@ import BarChartIcon from '../icons/BarChartIcon';
 import Chip from '@mui/material/Chip';
 import Stack from '@mui/material/Stack';
 import SettingsIcon from '../icons/SettingsIcon';
-import PlusIcon from '../icons/PlusIcon';
 import AddIcon from '@mui/icons-material/Add';
 import CloseIcon from '@mui/icons-material/Close';
-import  avatar from "../images/logo.svg"
+import { navTabs } from '../constants/data';
+import DoneIcon from '@mui/icons-material/Done';
 
 const drawerWidth = 70;
 const toolBarHeight = 60
 const appBarBackGroundColor = '#FFFFFF'
 
 export default function NavBar({ open, handleOpen }) {
+
+    const [newTabfield, setNewTabfield] = React.useState(false)
+    const [newTabVal, setNewTabVal] = React.useState('')
+    const [tabs, setTabs] = React.useState([...navTabs]);
+    const [activePage, setActivePage] = React.useState(3)
+
     const handleClick = () => {
-        // console.info('You clicked the Chip.');
+        if (newTabfield) {
+            if (newTabVal !== '')
+                setTabs([...tabs, {
+                    active: false,
+                    editable: false,
+                    label: newTabVal,
+
+                }])
+            setNewTabfield(false);
+
+        }
+        else setNewTabfield(true);
+
     };
 
     const handleDelete = () => {
-        // console.info('You clicked the delete icon.');
-    };
 
+    }
 
 
     return (
@@ -65,62 +83,70 @@ export default function NavBar({ open, handleOpen }) {
                     <div style={{ display: 'flex', alignItems: 'center' }}>
                         <Button><HomeIcon /></Button>
                         <Stack direction="row" spacing={1}>
-                            <Chip
-                                label="Overview"
+
+                            {tabs?.map((tab, i) => <TextField
+                                key={i}
+                                value={tab.label}
                                 variant="outlined"
-                                onClick={handleClick}
-                                sx={{
-                                    borderRadius: '10px',
-                                    width: '125px',
-                                    height: '40px',
-                                    borderColor: "#F3F2FC",
-                                    color: "#8D8D8D"
-                                }}
-                            // onDelete={handleDelete}
-                            />
-                            <Chip
-                                label="Customers"
-                                variant="outlined"
-                                onClick={handleClick}
-                                onDelete={handleDelete}
+                                // onClick={handleClick}
+                                onDelete={tab.active ? handleDelete : null}
                                 deleteIcon={<CloseIcon sx={{ fill: '#5E5ADB' }} />}
+                                inputProps={{
+                                    style: {
+                                        padding: 10,
+                                        color: tab.active ? '#5E5ADB' : '#8d8d8d',
+                                        "&:disabled": {
+                                            opacity: 0,
+                                            "-webkit-text-fill-color": "none",
+                                        },
+                                        textAlign: 'center',
+                                        fontSize: '14px'
+                                    },
+
+                                }}
+
+                                disabled={!tab.editable}
+                                InputProps={{
+                                    endAdornment: <InputAdornment position="end">
+                                        {tab.active && <CloseIcon
+                                            sx={{ fill: '#5E5ADB', fontSize: 20 }}
+                                        />}
+                                    </InputAdornment>,
+                                }}
                                 sx={{
                                     borderRadius: '10px',
-                                    width: '125px',
+                                    width: '140px',
+                                    "& fieldset": { border: 'none' },
                                     height: '40px',
-                                    backgroundColor: 'rgba(94, 90, 219, 0.05)',
+                                    backgroundColor: tab.active ? 'rgba(94, 90, 219, 0.05)' : 'transparent',
                                     border: '1px solid rgba(94, 90, 219, 0.15)',
-                                    color: '#5E5ADB'
                                 }}
-                            />
-                            <Chip
-                                label="Products"
+                            />)}
+
+                            {newTabfield && <TextField
+                                value={newTabVal}
                                 variant="outlined"
-                                onClick={handleClick}
-                                // onDelete={handleDelete}
+                                onChange={(e) => setNewTabVal(e.target.value)}
+                                inputProps={{
+                                    style: {
+                                        padding: 10,
+                                        color: '#8d8d8d',
+                                        textAlign: 'center',
+                                        fontSize: '14px'
+                                    },
+
+                                }}
+
                                 sx={{
                                     borderRadius: '10px',
-                                    width: '125px',
+                                    width: '140px',
+                                    "& fieldset": { border: 'none' },
                                     height: '40px',
-                                    borderColor: "#F3F2FC",
-                                    color: "#8D8D8D"
+                                    border: '1px solid rgba(94, 90, 219, 0.15)',
                                 }}
-                            />
-                            <Chip
-                                label="Settings"
-                                variant="outlined"
-                                onClick={handleClick}
-                                // onDelete={handleDelete}
-                                sx={{
-                                    borderRadius: '10px',
-                                    width: '125px',
-                                    height: '40px',
-                                    borderColor: "#F3F2FC",
-                                    color: "#8D8D8D"
-                                }}
-                            />
-                            <Chip
-                                label="+"
+                                fullWidth
+                            />}
+                            <Button
                                 variant="outlined"
                                 onClick={handleClick}
                                 sx={{
@@ -130,10 +156,16 @@ export default function NavBar({ open, handleOpen }) {
                                     border: '1px solid rgba(94, 90, 219, 0.15)',
                                     color: '#5E5ADB',
                                     fontSize: '35px',
-                                    paddingBottom: "2px",
                                     fontWeight: "300"
                                 }}
-                            />
+                            >
+                                {
+                                    newTabfield ?
+                                        <DoneIcon />
+                                        :
+                                        <AddIcon />
+                                }
+                            </Button>
                         </Stack>
                     </div>
                     <div style={{ display: 'flex', alignItems: 'center' }}>
@@ -142,7 +174,7 @@ export default function NavBar({ open, handleOpen }) {
                                 label="Add Widget"
                                 variant="outlined"
                                 onClick={handleOpen}
-                                icon={<AddIcon sx={{ fill: '#5E5ADB' }}/>}
+                                icon={<AddIcon sx={{ fill: '#5E5ADB' }} />}
                                 sx={{
                                     borderRadius: '10px',
                                     minWidth: '125px',
@@ -174,20 +206,20 @@ export default function NavBar({ open, handleOpen }) {
                         <Logo />
                     </Toolbar>
                     <List sx={{ paddingTop: '20px' }}>
-                        {[<ActivityIcon />, <MessageIcon />, <LayersIcon />, <BarChartIcon />].map((item, index) => (
+                        {[<ActivityIcon />, <MessageIcon />, <LayersIcon />, <BarChartIcon color="active"/>].map((item, index) => (
                             <ListItem disablePadding>
                                 <ListItemButton sx={{ justifyContent: 'center' }}>
                                     <ListItemIcon sx={{ minWidth: 0, justifyContent: 'center' }}>
-                                        {item}
+                                        <div className={index===activePage ? "active-page" : ""}>{item}</div>
                                     </ListItemIcon>
                                 </ListItemButton>
                             </ListItem>
                         ))}
                     </List>
                 </div>
-                
+
                 <Button sx={{ position: 'absolute', bottom: "20px" }}>
-                    <Avatar alt="Remy Sharp" src={avatar} sx={{ width: "50px", height: "50px"}}/>
+                    <Avatar alt="Remy Sharp" src={Avatarprofile} sx={{ width: "50px", height: "50px" }} />
                 </Button>
             </Drawer>
         </Box>

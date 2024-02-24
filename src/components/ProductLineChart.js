@@ -9,6 +9,8 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import { Divider, Typography } from '@mui/material';
+import ProductTableTabs from './ProductTableTabs';
+import ProductTableDropDown from './ProductTableDropDown';
 
 const colors = [
     "#F1E254",
@@ -34,18 +36,12 @@ export default function ProductLineChart({ data }) {
     const rows = data.rows
     const header = data.header
     const mode = data.mode
-    const height = data?.height
     const bottomAxis = data.xAxis
     const metaData = data.metaData
 
     return (
-        <Box className={`${mode} widgetBox`} sx={{
-            ...data.style,
-            // width: '100%',
-            height: height ? `${height}px` : '212px',
-        }}
-        >
-            {header}
+        <Box className={`${mode} widget-box line-chart`}>
+            {header === "tabs" ? <ProductTableTabs /> : <ProductTableDropDown />}
             <LineChart
                 xAxis={[{
                     data: xLabels,

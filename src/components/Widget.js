@@ -12,6 +12,14 @@ import HistoryIcon from '@mui/icons-material/History';
 import ZoomBox from './ZoomBox';
 import ToggleMenu from './ToggleMenu';
 import ProductTableTabs from './ProductTableTabs';
+import Radio from '@mui/material/Radio';
+import ProductTable from './ProductTable';
+import ProductBarChart from './ProductBarChart';
+import ProductLineChart from './ProductLineChart';
+import ProductPieChart from './ProductPieChart';
+import DescriptionBox from './DescriptionBox';
+import ProductTableDropDown from './ProductTableDropDown';
+import styles from "../css/override.css"
 
 const style = {
     position: 'absolute',
@@ -25,21 +33,65 @@ const style = {
     boxShadow: 24,
 };
 
-export default function Widget({ open, handleClose }) {
-    const handleClick = () => {
-        // console.info('You clicked the Chip.');
+export default function Widget({ open, handleClose, setWidgets }) {
+    const [title, setTitle] = React.useState("")
+    const [type, setType] = React.useState("data")
+    const [chartType, setChartType] = React.useState("bar")
+    const [data, setData] = React.useState("")
+    const [chartData, setChartData] = React.useState("")
+    const [summary, setSummary] = React.useState("")
+    const [mode, setMode] = React.useState("light")
+    const [component, setComponent] = React.useState(null)
+    const [obj, setObj] = React.useState({})
+
+    const handleSave = () => {
+        let widgets = JSON.parse(localStorage.getItem("widgets"))
+        widgets.push(obj)     
+        localStorage.setItem("widgets", JSON.stringify(widgets))
+        setWidgets(widgets)
     };
 
-    const handleDelete = () => {
-        // console.info('You clicked the delete icon.');
-    };
 
-    const [data, setData] = React.useState({
-        rows: null,
-        header: <ProductTableTabs />,
-        style: {},
-        mode: "light"
-    })
+    const handleCancel = () => {
+        setComponent("")
+    }
+
+    React.useEffect(() => {
+        setComponent("")
+        try{
+            if (type === "data") {
+                const item = {
+                    mode: mode,
+                    header: "tabs",
+                    style: {},
+                    rows: JSON.parse(data),
+                    type: "table"
+                }
+                setComponent(<ProductTable data={item} />)
+                setObj(item)
+            }
+            else if (type === "chart") {
+                setObj({
+                    mode: mode,
+                    header: <ProductTableTabs />,
+                    style: {},
+                    rows: JSON.parse(chartData)
+                })
+                if (chartType === "bar") setComponent(<ProductBarChart data={obj} />)
+                else if (chartType === "line") setComponent(<ProductLineChart data={obj} />)
+                else setComponent(<ProductPieChart data={obj} />)
+            }
+            else {
+                setObj({ ...obj, content: summary, header: <ProductTableDropDown />})
+                setComponent(<DescriptionBox data={obj} />)
+            }
+        }
+        catch (e) {
+            console.log(e)
+        }
+        
+    }, [ type, data, chartData, summary, mode ])
+
 
     return (
         <div>
@@ -58,19 +110,16 @@ export default function Widget({ open, handleClose }) {
                                     padding: "10px 20px 0 20px",
                                 }}>
                                     <Button variant="dark" sx={{ float: "right" }} >
-                                        <CloseIcon onClick={handleClose} />
+                                        <CloseIcon onClick={() => {
+                                            setComponent("")
+                                            handleClose()
+                                        }} />
                                     </Button>
                                 </Grid>
                                 <Grid item xs={12}>
                                     <Grid container style={{ width: "100%", padding: "0 20px", alignItems: "end" }}>
                                         <Grid item xs={1}>
-                                            <div style={{
-                                                padding: "9px",
-                                                border: "1px solid #E0DFF8",
-                                                borderRadius: "6px",
-                                                width: "45px",
-                                                height: "45px",
-                                            }}>
+                                            <div className='widget-icon-box'>
                                                 <WidgetIcon />
                                             </div>
                                         </Grid>
@@ -79,22 +128,19 @@ export default function Widget({ open, handleClose }) {
                                             <Typography sx={{ color: "#888891", fontSize: "13px" }}>Manage the glossary of terms of your Database</Typography>
                                         </Grid>
                                         <Grid item xs={5} sx={{ textAlign: "end" }}>
-                                            <Chip
-                                                label="Reusability Scores"
-                                                variant="outlined"
-                                                onClick={handleClick}
-                                                onDelete={handleDelete}
-                                                deleteIcon={<CloseIcon style={{ fill: '#888891', fontSize: "15px" }} />}
+                                            <TextField
                                                 sx={{
-                                                    borderRadius: '10px',
                                                     width: '90%',
-                                                    height: '35px',
-                                                    border: '1px solid #E1E1E1',
-                                                    color: '#888891',
-                                                    justifyContent: "space-between",
                                                     fontSize: "13px",
-                                                    borderRadius: "5px"
                                                 }}
+                                                inputProps={{
+                                                    style: {
+                                                        padding: 10
+                                                    }
+                                                }}
+                                                value={title}
+                                                onChange={(e) => setTitle(e.target.value)}
+                                                placeholder='Add title'
                                             />
                                         </Grid>
                                     </Grid>
@@ -104,46 +150,73 @@ export default function Widget({ open, handleClose }) {
                         <Grid item xs={12} sx={{
                             padding: "10px 20px 20px 20px"
                         }}>
-                            <Grid container >
+                            <Grid container>
                                 <Grid item xs={8}>
-                                    <Box sx={{
-                                        margin: "10px 15px 0 0",
-                                        height: "97%",
-                                        background: "#F8F8FF",
-                                        border: "1px solid #E0DFF8",
-                                        borderRadius: "6px"
-                                    }}>
-                                        <ZoomBox />
+                                    <Box className="widget-zoom-container">
+                                        {component && <ZoomBox component={component} title={title} />}
+                                        <div className="widget-color-button-group">
+                                            <button
+                                                style={{ background: "#282828" }}
+                                                className={`colorPicker ${mode === "dark" ? "active-mode" : ""}`}
+                                                onClick={() => setMode("dark")}
+                                            ></button>
+                                            <button
+                                                style={{ background: "#FFFFFF" }}
+                                                className={`colorPicker ${mode === "light" ? "active-mode" : ""}`}
+                                                onClick={() => setMode("light")}
+                                            ></button>
+                                            <button
+                                                style={{ background: "#5E5ADB" }}
+                                                className={`colorPicker ${mode === "primary" ? "active-mode" : ""}`}
+                                                onClick={() => setMode("primary")}
+                                            ></button>
+                                        </div>
                                     </Box>
                                 </Grid>
                                 <Grid item xs={4} >
                                     <Typography sx={{ color: '#888891', fontWeigth: "200", fontSize: "13px" }}>COMPONENTS</Typography>
-                                    <Box style={{ border: '1px solid #E1E1E1', borderRadius: "5px", padding: "10px", margin: "5px 0" }}>
+                                    <Box 
+                                        className={`widget-form-group ${type==="data" ? "active-form-group" : ""}`}
+                                        onClick={() => setType("data")}    
+                                    >
                                         <Typography sx={{ fontSize: "16px", color: "#585858" }}>Data</Typography>
                                         <TextField id="data" label="" variant="standard" placeholder="Random Description"
-                                            InputProps={{ disableUnderline: true }} sx={{ fontSize: "11px", color: "#585858" }} />
+                                            InputProps={{ disableUnderline: true }} sx={{ fontSize: "11px", color: "#585858" }}
+                                            value={data}
+                                            onChange={(e) => setData(e.target.value)}
+                                        />
                                     </Box>
-                                    <Box style={{ border: '1px solid #E1E1E1', borderRadius: "5px", padding: "10px", margin: "5px 0" }}>
+                                    <Box 
+                                        className={`widget-form-group ${type === "chart" ? "active-form-group" : ""}`}
+                                        onClick={() => setType("chart")}    
+                                    >
                                         <Typography sx={{ fontSize: "16px", color: "#585858" }}>Graph</Typography>
                                         <TextField id="graph" label="" variant="standard" placeholder="Random Description"
-                                            InputProps={{ disableUnderline: true }} sx={{ fontSize: "11px", color: "#585858" }} />
-                                        <ToggleMenu />
+                                            InputProps={{ disableUnderline: true }} sx={{ fontSize: "11px", color: "#585858" }} 
+                                            value={chartData}
+                                            onChange={(e) => setChartData(e.target.value)}    
+                                        />
+                                        <ToggleMenu chartType={chartType} setChartType={setChartType}/>
                                     </Box>
-                                    <Box style={{ border: '1px solid #E1E1E1', borderRadius: "5px", padding: "10px", margin: "5px 0" }}>
+                                    <Box 
+                                        className={`widget-form-group ${type === "summary" ? "active-form-group" : ""}`}
+                                        onClick={() => setType("summary")}    
+                                    >
                                         <Typography sx={{ fontSize: "16px", color: "#585858" }}>Summary</Typography>
                                         <TextField id="summary" label="" variant="standard" placeholder="Random Description"
-                                            InputProps={{ disableUnderline: true }} sx={{ fontSize: "11px", color: "#585858" }} />
+                                            InputProps={{ disableUnderline: true }} sx={{ fontSize: "11px", color: "#585858" }} 
+                                            value={summary}
+                                            onChange={(e) => setSummary(e.target.value)}    
+                                        />
                                     </Box>
-
-                                    <Box style={{
-                                        marginTop: "40px",
-                                        width: "100%",
-                                        display: "flex",
-                                        justifyContent: "space-between"
-                                    }}>
+                                    <Box className="widget-button-group">
                                         <Button sx={{ color: "#9F9F9F", backgroundColor: "#F8F8FF", border: '1px solid #E0DFF8', padding: "10px 10px" }}><HistoryIcon /></Button>
-                                        <Button sx={{ color: "#9F9F9F", fontSize: "14px", border: '1px solid #E1E1E1', padding: "10px 25px" }} onClick={handleClose}>Cancel</Button>
-                                        <Button variant="contained" sx={{ background: "#5E5ADB", fontSize: "14px", padding: "10px 25px" }}>Save</Button>
+                                        <Button sx={{ color: "#9F9F9F", fontSize: "14px", border: '1px solid #E1E1E1', padding: "10px 35px" }} onClick={handleCancel}>Cancel</Button>
+                                        <Button 
+                                            variant="contained" 
+                                            sx={{ background: "#5E5ADB", fontSize: "14px", padding: "10px 35px" }}
+                                            onClick={handleSave}    
+                                        >Save</Button>
                                     </Box>
                                 </Grid>
                             </Grid>

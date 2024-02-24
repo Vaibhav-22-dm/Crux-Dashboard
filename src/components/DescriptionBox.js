@@ -1,6 +1,8 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import styles from "../css/override.css"
+import ProductTableTabs from './ProductTableTabs';
+import ProductTableDropDown from './ProductTableDropDown';
 
 export default function DescriptionBox({ data }) {
 
@@ -9,19 +11,20 @@ export default function DescriptionBox({ data }) {
     const mode = data.mode
 
     return (
-        <Box className={`${mode} widgetBox`} sx={{...data.style, width: '100%' }}>
-            {header}
+        <Box className={`${mode} widget-box desc-box`}>
+            {header==="tabs" ? <ProductTableTabs /> : <ProductTableDropDown />}
             <Box
                 sx={{
                     padding: '15px 3px'
                 }}
             >
                 <div
-                    dangerouslySetInnerHTML={{ __html: content }}
+                    dangerouslySetInnerHTML={{ __html: `<div>${content}</div>` }}
                     style={{
                         maxHeight: '146px',
                         overflowY: 'auto',
-                        padding: '0px 15px'
+                        padding: '0px 15px',
+                        fontSize: '11px'
                     }} 
                     className={'custom'}   
                 />

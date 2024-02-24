@@ -5,28 +5,27 @@ import BarChartIcon from '@mui/icons-material/BarChart';
 import ToggleButton from '@mui/material/ToggleButton';
 import ToggleButtonGroup from '@mui/material/ToggleButtonGroup';
 
-export default function ToggleMenu() {
-    const [alignment, setAlignment] = React.useState('left');
+export default function ToggleMenu( {chartType, setChartType} ) {
 
-    const handleAlignment = (event, newAlignment) => {
-        setAlignment(newAlignment);
+    const handleChartType = (event, chartType) => {
+        setChartType(chartType);
     };
 
     return (
         <ToggleButtonGroup
-            value={alignment}
+            value={chartType}
             exclusive
-            onChange={handleAlignment}
-            aria-label="text alignment"
+            onChange={handleChartType}
+            aria-label="chart type"
             sx={{ padding: "5px" }}
         >
-            <ToggleButton value="left" aria-label="left aligned">
+            <ToggleButton value="bar" aria-label="Bar Graph">
                 <BarChartIcon />
             </ToggleButton>
-            <ToggleButton value="center" aria-label="centered">
+            <ToggleButton value="line" aria-label="Line Graph">
                 <ShowChartIcon />
             </ToggleButton>
-            <ToggleButton value="right" aria-label="right aligned">
+            <ToggleButton value="pie" aria-label="Pie Chart">
                 <PieChartOutlineIcon />
             </ToggleButton>
         </ToggleButtonGroup>

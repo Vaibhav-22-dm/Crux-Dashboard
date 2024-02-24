@@ -3,7 +3,7 @@ import './App.css';
 import NavBar from './components/NavBar'
 import Dashboard from './pages/Dashboard';
 import { createTheme } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Widget from './components/Widget';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 
@@ -19,7 +19,13 @@ const theme = createTheme({
 
 function App() {
 
+  useEffect(() => {
+    if (!localStorage.getItem("widgets")) localStorage.setItem("widgets", JSON.stringify(new Array))
+  }, [])
+
+
   const [open, setOpen] = useState(false)
+  const [widgets, setWidgets] = useState(JSON.parse(localStorage.getItem("widgets")))
 
   const handleOpen = () => {
     setOpen(true);
@@ -37,8 +43,8 @@ function App() {
             <Route path="/" element={
               <>
                 <NavBar open={open} handleOpen={handleOpen} />
-                <Dashboard />
-                <Widget open={open} handleClose={handleClose} />
+                <Dashboard widgets={widgets}/>
+                <Widget open={open} handleClose={handleClose} setWidgets={setWidgets} />
               </>
             }>
             </Route>

@@ -10,17 +10,19 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import ProductTableTabs from './ProductTableTabs';
+import ProductTableDropDown from './ProductTableDropDown';
 
 
 export default function ProductTable({ data }) {
+    const rows = data?.rows
+    const header = data?.header
+    const mode = data?.mode
 
-    const rows = data.rows
-    const header = data.header
-    const mode = data.mode
 
     return (
-        <Box className={`${mode} widgetBox`} sx={{ ...data.style, width: '100%' }}>
-            {header}
+        <Box className={`${mode} widget-box product-table`} sx={{width: '100%' }}>
+            {header === "tabs" ? <ProductTableTabs /> : <ProductTableDropDown />}
             <TableContainer sx={{ padding: "0px 20px" }}>
                 <Table sx={{ minWidth: 0, fontSize: '11px' }} aria-label="simple table">
                     <TableHead>
