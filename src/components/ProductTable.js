@@ -9,7 +9,6 @@ import TableRow from '@mui/material/TableRow';
 import ProductTableTabs from './ProductTableTabs';
 import ProductTableDropDown from './ProductTableDropDown';
 
-
 export default function ProductTable({ data }) {
     const rows = data?.rows
     const header = data?.header
@@ -44,7 +43,7 @@ export default function ProductTable({ data }) {
                                     <TableCell
                                         className={
                                             `table-body-cell 
-                                        ${idx === Object.keys(row).length - 1 === Object.keys(rows[0]).length - 1 ? "" : 'has-border'}
+                                        ${idx === Object.keys(row).length - 1 ? "" : 'has-border'}
                                         ${index === rows.length - 1 ? "last-cell" : ""}
                                         `}
                                         align={idx === 0 ? 'left' : 'center'}>{row[key]}</TableCell>

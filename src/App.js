@@ -6,7 +6,7 @@ import { createTheme } from '@mui/material';
 import { useEffect, useState } from 'react';
 import Widget from './components/Widget';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import styles from "./css/styles.css"
+import "./css/styles.css";
 
 
 const theme = createTheme({
