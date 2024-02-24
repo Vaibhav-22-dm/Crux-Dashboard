@@ -33,7 +33,7 @@ const style = {
 export default function Widget({ open, handleClose, setWidgets }) {
     const [title, setTitle] = React.useState("")
     const [type, setType] = React.useState("data")
-    const [chartType, setChartType] = React.useState("bar")
+    const [chartType, setChartType] = React.useState("line")
     const [data, setData] = React.useState("")
     const [chartData, setChartData] = React.useState("")
     const [summary, setSummary] = React.useState("")
