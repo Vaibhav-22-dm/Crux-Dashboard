@@ -17,10 +17,10 @@ function PieCenterLabel({ children }) {
     const { width, height, left, top } = useDrawingArea();
     return (
         <>
-            <StyledText x={left + width / 2 + 50} y={top + height / 2 - 30} sx={{fontSize: '18px'}}>
+            <StyledText x={left + width / 2 + 46} y={top + height / 2 - 30} sx={{fontSize: '18px'}}>
                 {children[0]}
             </StyledText>
-            <StyledText x={left + width / 2 + 50} y={top + height / 2 - 10} sx={{ fontSize: '10px' }}>
+            <StyledText x={left + width / 2 + 46} y={top + height / 2 - 10} sx={{ fontSize: '10px' }}>
                 {children[1]}
             </StyledText>
         </>
